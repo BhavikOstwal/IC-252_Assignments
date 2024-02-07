@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib import style
 
 def f(x_inp:np.ndarray):
     return (np.sin(x_inp)**7 +np.cos(x_inp)**5)/np.exp(x_inp)
@@ -19,4 +18,5 @@ plt.xlim(0,4)
 plt.grid()
 plt.xlabel('x')
 plt.ylabel(r'$f(x) = \frac{\sin^7(x) + \cos^5(x)}{e^x}$')
-plt.show()
+plt.savefig("Q.4.png")
+# plt.show()
