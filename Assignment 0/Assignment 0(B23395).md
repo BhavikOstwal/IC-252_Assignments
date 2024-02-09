@@ -1,5 +1,9 @@
 # **IC-252**
-## Assignment 0
+    Name: Bhavik Ostwal
+    Roll no.: B23395
+    Branch: Mathematics and Computing
+## Assignment 0 
+
 #### **Question 1**: 
 Find out the size of array ’a’, ’b’, and ’c’. In the following code block.
 ```python
