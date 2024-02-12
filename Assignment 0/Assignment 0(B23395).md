@@ -17,6 +17,12 @@ print("Size of arrray a:", a.size)
 print("Size of arrray b:", b.size)
 print("Size of arrray c:", c.size)
 ```
+OUTPUT:
+```
+Size of arrray a: 1
+Size of arrray b: 5
+Size of arrray c: 6
+```
 --------
 
 #### **Question 2**: 
@@ -30,7 +36,9 @@ val=np.random.normal(size=(500), scale=5, loc=30)
 bins=np.arange(10,50,2)
 # print(bins)
 
-plt.hist(val, bins=bins, edgecolor = 'black', color = 'r')
+# print(plt.style.available)
+plt.style.use('dark_background')
+plt.hist(val, bins=bins, edgecolor = 'w', color = 'r')
 plt.xlabel('Opening price')
 plt.ylabel('Number of occurrences')
 plt.title('Normal distribrution')
@@ -71,6 +79,32 @@ def submatrix_3x4(mat: np.ndarray)-> np.ndarray:
 
 print(f"The desired submatrix of\n {mat}\n is a {submatrix_3x4(mat).shape} matrix: \n {submatrix_3x4(mat)}")
 ```
+OUTPUT:
+```
+Left Diagonal Sum of
+[[1 3 4 5 2]
+ [1 5 2 4 3]
+ [5 2 3 4 1]
+ [1 4 2 6 9]
+ [4 5 2 1 7]] is 22
+Right Diagonal Sum of
+[[1 3 4 5 2]
+ [1 5 2 4 3]
+ [5 2 3 4 1]
+ [1 4 2 6 9]
+ [4 5 2 1 7]] is 17
+The desired submatrix of
+ [[1 3 4 5 2]
+ [1 5 2 4 3]
+ [5 2 3 4 1]
+ [1 4 2 6 9]
+ [4 5 2 1 7]]
+ is a (3, 4) matrix: 
+ [[3 4 5 2]
+ [5 2 4 3]
+ [2 3 4 1]]
+```
+
 -----
 #### **Question 4**: 
 Using array operations in np.array and np math functions. Plot the function:
@@ -150,3 +184,6 @@ plt.savefig('Q.5.png')
 # plt.show()
 ```
 ![Q.5 graph](Q.5.png)
+
+# 
+#### References: Used [this source](https://stackoverflow.com/questions/42741687/histogram-outlined-by-added-edgecolor) for plot styles and edgecolor parameters
