@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 
-n_values = np.arange(2,50)
+n_values = np.arange(2,501)
 prob_values=[]
 for n in range(len(n_values)):
     arr = np.arange(1,n_values[n]+1)
@@ -27,7 +27,7 @@ plt.grid(alpha=0.5)
 
 plt.subplot(1,2,2)
 plt.axis('off')
-plt.text(0,0.5,"As getting this is a random ")
+plt.text(0,0.5,"(my own reasoning on this graph)")
 '''--> ... to be continued'''
 
 
