@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.gridspec import GridSpec
 
-n_values = np.arange(2,501)
+n_values = np.arange(2,50)
 prob_values=[]
 for n in range(len(n_values)):
     arr = np.arange(1,n_values[n]+1)
@@ -15,11 +16,20 @@ for n in range(len(n_values)):
     prob_values.append(rlt_frq/1000)
         
 # print(plt.style.available)
+plt.figure(figsize=(10,4))
 plt.style.use('ggplot')
+plt.subplot(1,2,1)
 plt.plot(n_values, prob_values)
 plt.title(r"Probabilities at various values of $n$")
 plt.xlabel(r'$n$')
 plt.ylabel(r"Probability of Winning")
 plt.grid(alpha=0.5)
+
+plt.subplot(1,2,2)
+plt.axis('off')
+plt.text(0,0.5,"As getting this is a random ")
+'''--> ... to be continued'''
+
+
 plt.savefig("Q3.png")
 plt.show()
