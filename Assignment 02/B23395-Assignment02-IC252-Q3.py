@@ -14,7 +14,12 @@ for n in range(len(n_values)):
                 break
     prob_values.append(rlt_frq/1000)
         
+# print(plt.style.available)
+plt.style.use('ggplot')
 plt.plot(n_values, prob_values)
+plt.title(r"Probabilities at various values of $n$")
 plt.xlabel(r'$n$')
-plt.ylabel(r"probability of winning")
+plt.ylabel(r"Probability of Winning")
+plt.grid(alpha=0.5)
+plt.savefig("Q3.png")
 plt.show()

@@ -28,8 +28,15 @@ probabilities = counts/10000
 
 plt.style.use('dark_background')
 plt.title('\'Monty-Hall\' Game Probability Distribution')
-plt.bar(["Switch", "Stick"],probabilities, color='red',edgecolor='white', width=0.5)
+plt.bar(["Switch", "Stick"],probabilities, color='green',edgecolor='white', width=0.5)
 plt.ylabel("Probability of winning the Car")
 plt.xlabel("Decision of the Player")
 plt.ylim(0,1)
+plt.savefig("Q5.png")
 plt.show()
+# print((MontyHall(True)+ MontyHall(False))/10000)
+
+
+
+
+

@@ -14,6 +14,10 @@ ratio_val = []
 for i in range(1,21):
     n_val.append(i)
     ratio_val.append(factorial(i)/factroial_s(i))
-plt.plot(n_val, ratio_val)
+
+plt.style.use('dark_background')
+plt.plot(n_val, ratio_val, color='green', linewidth=1.5)
+plt.grid(alpha=0.2)
 plt.ylim(0,2)
+plt.savefig("Q2.png")
 plt.show()
