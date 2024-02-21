@@ -1,18 +1,20 @@
+import numpy as np
 import matplotlib.pyplot as plt
 
-def factorial(n:int):
-    if (n<2):
-        return 1
-    return n*factorial(n-1)
-
-n_values = []
-p_val = []
-for i in range(2,200):
-    n_values.append(i)
-    p=0
-    for k in range(0,i):
-        p+=((-1)**k)/factorial(k)
-    p_val.append(p)
-
-plt.plot(n_values,p_val)
+n_values = np.arange(2,501)
+prob_values=[]
+for n in range(len(n_values)):
+    arr = np.arange(1,n_values[n]+1)
+    rlt_frq =0
+    for j in range(1000):
+        np.random.shuffle(arr)
+        for i in range(len(arr)):
+            if (arr[i]==i+1):
+                rlt_frq+=1
+                break
+    prob_values.append(rlt_frq/1000)
+        
+plt.plot(n_values, prob_values)
+plt.xlabel(r'$n$')
+plt.ylabel(r"probability of winning")
 plt.show()
