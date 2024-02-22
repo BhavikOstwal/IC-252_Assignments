@@ -32,9 +32,9 @@ plt.bar(["Switch", "Stick"],probabilities, color='green',edgecolor='white', widt
 plt.ylabel("Probability of winning the Car")
 plt.xlabel("Decision of the Player")
 plt.ylim(0,1)
-plt.savefig("Q5.png")
+# plt.savefig("Q5.png")
 plt.show()
-# print((MontyHall(True)+ MontyHall(False))/10000)
+# print((MontyHall(True)+ MontyHall(False))/10000) --> it won't necessarily be equal to 1
 
 
 

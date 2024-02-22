@@ -14,9 +14,10 @@ for n in range(len(n_values)):
                 rlt_frq+=1
                 break
     prob_values.append(rlt_frq/1000)
-        
+
+
 # print(plt.style.available)
-plt.figure(figsize=(10,4))
+plt.figure(figsize=(14,5))
 plt.style.use('ggplot')
 plt.subplot(1,2,1)
 plt.plot(n_values, prob_values)
@@ -25,11 +26,11 @@ plt.xlabel(r'$n$')
 plt.ylabel(r"Probability of Winning")
 plt.grid(alpha=0.5)
 
+
 plt.subplot(1,2,2)
 plt.axis('off')
-plt.text(0,0.5,"(my own reasoning on this graph)")
-'''--> ... to be continued'''
+plt.text(0,0.3,"As from my inference from the graph,at some point, \nthe event of getting number on kth card (from a \ndeck of well-shuffled cards) equal to k is \ncompleletly random. In the graph, we can see that for \nany value of n, the local maxima of probability is \nnot sure. So, there doesn't exist any strategy for choosing \nn to maximize our winning probability.", fontsize=14)
 
 
-plt.savefig("Q3.png")
+# plt.savefig("Q3.png")
 plt.show()

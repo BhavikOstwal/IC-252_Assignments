@@ -24,5 +24,5 @@ plt.ylabel(r"$\frac{n!}{\sqrt{2 \pi n}} \left(\frac{e}{n}\right)^n$", fontsize=1
 plt.xticks(np.arange(0,21,2))
 plt.yticks(fontsize = 8)
 plt.title("Stirling's Factorial Approximation Test")
-plt.savefig("Q2.png")
+# plt.savefig("Q2.png")
 plt.show()
