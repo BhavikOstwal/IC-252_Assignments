@@ -2,18 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 
-n_values = np.arange(2,501)
+def factorial(n:int):
+    if (n<2):
+        return 1
+    return n*factorial(n-1)
+
+n_values = np.arange(2,201)
 prob_values=[]
 for n in range(len(n_values)):
-    arr = np.arange(1,n_values[n]+1)
-    rlt_frq =0
-    for j in range(1000):
-        np.random.shuffle(arr)
-        for i in range(len(arr)):
-            if (arr[i]==i+1):
-                rlt_frq+=1
-                break
-    prob_values.append(rlt_frq/1000)
+    count = 0
+    for i in range(n_values[n]+1):
+        count+= ((-1)**i)/factorial(i)
+    prob_values.append(1-count)
 
 
 # print(plt.style.available)
@@ -29,8 +29,8 @@ plt.grid(alpha=0.5)
 
 plt.subplot(1,2,2)
 plt.axis('off')
-plt.text(0,0.3,"As from my inference from the graph,at some point, \nthe event of getting number on kth card (from a \ndeck of well-shuffled cards) equal to k is \ncompleletly random. In the graph, we can see that for \nany value of n, the local maxima of probability is \nnot sure. So, there doesn't exist any strategy for choosing \nn to maximize our winning probability.", fontsize=14)
+plt.text(0,0.3,"As from my inference from the graph, \nthe probability of getting number on kth card, at some \npoint, (from a deck of well-shuffled cards) equal to k is \nmaximum at n=3, i.e., Probability = 0.66(approx.). And there \nis also a local maxima at n=5.  Also, as n increases, \nthe probability also converges to 0.63(approx.). So, \nthe strategy to maximize our winning probability is choose \nn=3 or n>=7 but do not choose n=2,4 or n=6 (as they have \nlocal minima)", fontsize=14)
 
 
-# plt.savefig("Q3.png")
+plt.savefig("Q3.png")
 plt.show()

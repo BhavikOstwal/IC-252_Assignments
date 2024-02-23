@@ -31,6 +31,7 @@ table_df = pd.DataFrame(
 # print(plt.style.available)
 plt.figure(figsize=(13,5))
 
+#To display table side-by-side of my graph, I use pandas documentation
 subplt = plt.subplot(1,2,1)
 plt.axis('off')
 tab = table(subplt, table_df, loc='center', colWidths=[0.3,0.3], fontsize=15)     #referred to website for plotting Dataframe Table side by side to histogram
