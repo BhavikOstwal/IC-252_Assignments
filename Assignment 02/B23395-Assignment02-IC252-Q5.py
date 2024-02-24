@@ -2,10 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 choices_arr = np.array([0,0,1])
+num_trials = 10000
 
 def MontyHall(switch=True):
     win_freq = 0
-    for i in range(10000):
+    for i in range(num_trials):
         np.random.shuffle(choices_arr)
         index = np.random.randint(0,3)
         for i in range(3):
@@ -24,7 +25,10 @@ def MontyHall(switch=True):
 
 
 counts = np.array([MontyHall(True), MontyHall(False)], dtype=np.int32)
-probabilities = counts/10000
+probabilities = counts/num_trials
+
+print("P(winning a car|switch) =", probabilities[0])
+print("P(winning a car|stick) =", probabilities[1])
 
 plt.style.use('dark_background')
 plt.title('\'Monty-Hall\' Game Probability Distribution')
@@ -34,7 +38,7 @@ plt.xlabel("Decision of the Player")
 plt.ylim(0,1)
 # plt.savefig("Q5.png")
 plt.show()
-# print((MontyHall(True)+ MontyHall(False))/10000) --> it won't necessarily be equal to 1
+# print((MontyHall(True)+ MontyHall(False))/num_trials) --> it won't necessarily be equal to 1
 
 
 
