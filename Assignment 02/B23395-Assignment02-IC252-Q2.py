@@ -11,7 +11,7 @@ def factroial_s(n:int):
     return ((2*np.pi*n)**0.5)*((n/math.e)**n)
 n_val = []
 ratio_val = []
-for i in range(1,21):
+for i in range(1,171):
     n_val.append(i)
     ratio_val.append(factorial(i)/factroial_s(i))
 

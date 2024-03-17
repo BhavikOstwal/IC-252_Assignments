@@ -13,7 +13,6 @@ for i in range(10000):
 
 unique_sums, counts = np.unique(result_val, return_counts=True)
 unique_sums = unique_sums.astype(np.int32)
-counts = counts.astype(np.int32)
 probabilities = counts/len(result_val)
 
 # print(counts, type(counts))
@@ -26,17 +25,16 @@ table_df = pd.DataFrame(
     }
 )
 
-# plt.style.use('dark_background')
-# plt.style.use('seaborn-v0_8-dark-palette')
+print(table_df)
 # print(plt.style.available)
 plt.figure(figsize=(13,5))
 
-#To display table side-by-side of my graph, I use pandas documentation
+# To display table side-by-side of my graph, I use pandas documentation
 subplt = plt.subplot(1,2,1)
 plt.axis('off')
 tab = table(subplt, table_df, loc='center', colWidths=[0.3,0.3], fontsize=15)     #referred to website for plotting Dataframe Table side by side to histogram
 
-plt.subplot(1,2,2)
+# plt.subplot(1,2,2)
 plt.bar(unique_sums, probabilities, color='green', edgecolor='black', alpha=0.7)
 plt.title('Probability Distribution of the Sum of Two Dice')
 plt.xlabel('Sum')

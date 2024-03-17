@@ -17,7 +17,7 @@ def MontyHall(switch=True):
             final_choice = 3-(index+host_choice)
         else:
             final_choice=index
-
+    
         if(choices_arr[final_choice]==1):
             # print("CAR")
             win_freq+=1
