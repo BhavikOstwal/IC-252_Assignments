@@ -33,14 +33,14 @@ Exp_d = Exp_dist(lambda_exp)
 #  Plotting PDF
 pdf_lst = []
 x_lst = []
-for i in np.arange(0,0.3,0.01):
+for i in np.arange(0,0.3,0.001):
     pdf_lst.append(Exp_d.PDF_fn(i))
     x_lst.append(i)
     # print(f"At x = {i}, PDF = {Exp_d.PD/F_fn(i)}")
 
 
 plt.plot(x_lst, pdf_lst)
-# plt.show()
+plt.show()
 
 # Part (b)
 print('\n\nPART (b)')
