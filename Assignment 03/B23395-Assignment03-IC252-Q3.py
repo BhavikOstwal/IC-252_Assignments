@@ -3,7 +3,6 @@ from statistics import NormalDist
 
 np.random.seed(0)
 samples = np.random.normal(size=100, loc=150, scale=10)
-# samples = np.sort(samples)
 exp_ND = NormalDist.from_samples(samples)
 theory_ND = NormalDist(140,10)
 

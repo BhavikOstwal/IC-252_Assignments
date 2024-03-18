@@ -1,9 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Based on the given data, between 17th April 2020 and 23rd April 2020, there were on average 1373 confirmed cases per day, i.e. on average around 57 cases per hour.
-# To model time to the arrival of the next confirmed case of Covid-19 in India, we'll be using the exponential distribution.
-
 
 class Exp_dist:
     def __init__(self, lmda:float):
@@ -35,12 +32,11 @@ x_lst = []
 for i in np.arange(0,0.3,0.001):
     pdf_lst.append(Exp_d.PDF_fn(i))
     x_lst.append(i)
-    # print(f"At x = {i}, PDF = {Exp_d.PD/F_fn(i)}")
 
 
 plt.plot(x_lst, pdf_lst)
-plt.savefig("Q1.png")
-# plt.show()
+# plt.savefig("Q1.png")
+plt.show()
 
 # Part (b)
 print('\n\nPART (b)')

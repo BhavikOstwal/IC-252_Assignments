@@ -39,7 +39,7 @@ plt.ylabel(r'$P(X≤x)$', rotation=0)
 plt.xlim(-0.5,5.5)
 plt.ylim(-0.1,1.1)
 plt.grid()
-plt.savefig("Q2_(a).png")
+# plt.savefig("Q2_(a).png")
 
 plt.show()
 
@@ -80,7 +80,7 @@ def mean_of_means(num_tr:int, picked_n:int):
 
     # Plotting Historgram
     plt.hist(means_arr ,edgecolor = 'black', color='g')
-    plt.savefig("Q2_(c).png")
+    # plt.savefig("Q2_(c).png")
     plt.show()
 
     # mean & var
