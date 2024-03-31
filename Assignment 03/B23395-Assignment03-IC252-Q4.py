@@ -21,7 +21,6 @@ def win_experiment(num_trials:int):
         unique, count = np.unique(my_hand, return_counts=True)
         if (len(unique)==2):
             if (count[0]-count[1]==1)|(count[1]-count[0]==1):
-                # print(my_hand)
                 win_count+=1
 
     return win_count
