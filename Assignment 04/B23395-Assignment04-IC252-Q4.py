@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 repair_times_FM = np.random.normal(1.5, 0.75, 100)
@@ -33,8 +32,7 @@ plt.show()
 
 
 # Part (b)
-print("This part is done on paper (theoritical)")
-
+# This part is done on paper (theoritical)
 
 # Part (c)
 T = repair_times_AM + repair_times_FM
@@ -47,9 +45,11 @@ sigma_T = np.std(T)
 print(mu_T,sigma_T )
 
 plt.hist(np.random.normal(loc=mu_T, scale=sigma_T, size=10000), edgecolor='black', color='red', linewidth=1.5)
-# plt.savefig('Q4_(d).png')
+plt.xlabel("time (hrs)")
+plt.ylabel(r'$f_X(x)$', rotation=0)
+plt.title("Distribution of total repair time (T)")
+plt.savefig('Q4_(d).png')
 plt.show()
 
 # Part (e)
-'''to be continued...'''
-
+# This part is done on paper (theoritical)
