@@ -2,15 +2,14 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+
 joint_prob = {
     "T-Shirt":[0.1,0.05,0.1],
     "Sweater":[0.05,0.1,0.2],
     "Jacket":[0.1,0.2,0.1]
 }
 df = pd.DataFrame(joint_prob,index=['Sunny', 'Rainy', 'Cloudy'])
-# df.to_csv('joint_prob.csv')
 print(df, "\n")
-
 
 # Part (b)
 print("\nMarginal distribution of Y:\n")
