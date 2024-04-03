@@ -7,8 +7,8 @@ def normal_prob(x, mu, sigma):
 
 X = np.linspace(0,100, 10000)
 
-plt.plot(X, normal_prob(X,78,5), label='Prof. A\'s Exam')
-plt.plot(X, normal_prob(X,85,3), label='Prof. B\'s Exam')
+plt.plot(X, normal_prob(X,78,5), label='Prof. A\'s Exam', color='red')
+plt.plot(X, normal_prob(X,85,3), label='Prof. B\'s Exam', color='green')
 plt.xlabel('Marks')
 plt.ylabel(r'$f_X(x)$', rotation=0)
 plt.title('PDFs of both Professor A\'s and Professor B\'s exams')

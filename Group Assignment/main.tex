@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt,oneside,letterpaper,english]{article}
 \usepackage[T1]{fontenc}
 \usepackage[latin1]{inputenc}
 \usepackage[margin=2.25cm,headheight=26pt,includeheadfoot]{geometry}
@@ -12,6 +12,7 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
@@ -30,6 +31,11 @@
 \usepackage[english]{nomencl}
 \usepackage{xcolor}
 \usepackage{lipsum}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref} % Load hyperref last
 
 
 % --- set footer and header ---
@@ -49,7 +55,7 @@ numbers=left,
 numberstyle={\scriptsize\color{black}},			% size of the numbers
 numbersep=0.5cm											
 }
-}
+
 
 \newlist{steps}{enumerate}{1}
 \setlist[steps, 1]{leftmargin=1.5cm,label = Step \arabic*:}
@@ -71,7 +77,7 @@ numbersep=0.5cm
 
 
 \begin{document}
-\pagenumbering{Roman} 
+\pagenumbering{arabic} 
 \input{sources/0_frontpage.tex}
 
 \newpage
@@ -81,12 +87,11 @@ numbersep=0.5cm
 \tableofcontents
 
 \renewcommand{\baselinestretch}{1}\normalsize
-%\singlespacing
-\thispagestyle{fancy} % force page style
+\thispagestyle{fancy}
 
 
 \newpage
-\pagenumbering{Roman}
+\pagenumbering{arabic}
 \fancyfoot[C]{Page \thepage\ of \pageref{endOfDoc}}
 
 \section{Introduction} \label{ch1}
@@ -98,7 +103,8 @@ numbersep=0.5cm
 \newpage
 \fancyfoot[C]{Page \thepage\ of \pageref{endOfDoc}}
 \section{Mechanics} \label{ch2}
-\input{sources/2_mechanics.tex} 
+\input{sources/2_mechanics.tex } 
+\cite{mechanics}
 
 \label{EndOfText}
 
@@ -124,13 +130,28 @@ numbersep=0.5cm
 \listoftables
 \thispagestyle{fancy}
 
+\label{EndOfText}
 
 
+% Bibliography
 \newpage
 \addcontentsline{toc}{section}{References}
-\bibliography{document.bib} 
-\bibliographystyle{ieeetr}
-
-
+\bibliographystyle{unsrt}
+\bibliography{references.bib}
+	
 \label{endOfDoc}
+
+
+%Contribution table
+\newpage
+\addcontentsline{toc}{section}{Contribution of Authors}
+\input{sources/5_Contribution.tex}
+\thispagestyle{fancy}
+
+\label{EndOfText}
+
+
+
 \end{document}
+
+
