@@ -35,7 +35,6 @@
 \usepackage{natbib}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{hyperref} % Load hyperref last
 
 
 % --- set footer and header ---
@@ -45,7 +44,6 @@
 \setlength{\parindent}{2em}
 \title{Stock Performance of LQ45 Index} % to reference as \title, dont use \maketitle
 \makeatletter\let\Title\@title\makeatother
-
 
 
 \lstset{language=Matlab,
@@ -136,20 +134,20 @@ numbersep=0.5cm
 % Bibliography
 \newpage
 \addcontentsline{toc}{section}{References}
-\bibliographystyle{unsrt}
+\bibliographystyle{plain}
 \bibliography{references.bib}
 	
-\label{endOfDoc}
+\label{EndOfText}
 
 
 %Contribution table
 \newpage
 \addcontentsline{toc}{section}{Contribution of Authors}
+% \fancyfoot[C]{Page \thepage\ of \pageref{endOfDoc}}
 \input{sources/5_Contribution.tex}
 \thispagestyle{fancy}
 
-\label{EndOfText}
-
+\label{endOfDoc}
 
 
 \end{document}
