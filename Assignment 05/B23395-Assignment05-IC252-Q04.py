@@ -33,6 +33,10 @@ class BivariateGaussian:
         y = np.linspace(self.mean_y - y_range * self.std_y, self.mean_y + y_range * self.std_y, num_points)
         X, Y = np.meshgrid(x, y)
         Z = self.calculate_pdf(X, Y)
+
+        # fig = plt.figure()
+        # ax = fig.add_subplot(111, projection='3d')
+        # ax.plot_wireframe(X, Y, Z)
         plt.contour(X, Y, Z, cmap='viridis')
         plt.xlabel('X')
         plt.ylabel('Y')
