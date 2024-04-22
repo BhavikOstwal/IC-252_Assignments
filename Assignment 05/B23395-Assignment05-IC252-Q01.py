@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 
 with open("fileA-TimeMachine.txt", 'r') as my_txt:
     a = my_txt.read().strip().split()
-    # a = a.strip('.').lstrip('(,\"').rstrip('.\"').split()
     lst = []
     for i in a:
         lst.append(i.lstrip('\'_("“‘’*').rstrip('\'_”).";—!?,:‘’ …*'))
