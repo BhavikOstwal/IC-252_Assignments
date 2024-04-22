@@ -17,29 +17,29 @@ def random_walk(num_steps:int, prob_val:list):
 def plot_pdf(num_steps:int, prob_val:list, part:str):
     unique, count = np.unique(random_walk(num_steps, prob_val), return_counts=True)
     plt.bar(unique, count/10000)
-    plt.savefig(f"Q.3_{part}_{num_steps}.png")
+    # plt.savefig(f"Q.3_{part}_{num_steps}.png")
+    plt.show()
     plt.clf()
-    # plt.show()
 
 '''PART (a)'''
 prob_lst = [0.5,0.5]
 
 # For n = 100 steps
-# plot_pdf(100, prob_lst, part='a')
+plot_pdf(100, prob_lst, part='a')
 # For n = 1000 steps
 plot_pdf(1000, prob_lst, part='a')
 # For n = 10000 steps
-# plot_pdf(10000, prob_lst, part='a')
+plot_pdf(10000, prob_lst, part='a')
 
 
 '''PART (b)'''
 prob_lst = [0.4,0.6]
 
 # For n = 100 steps
-# plot_pdf(100, prob_lst, part='b')
+plot_pdf(100, prob_lst, part='b')
 # For n = 1000 steps
 plot_pdf(1000, prob_lst, part='b')
 # For n = 10000 steps
-# plot_pdf(10000, prob_lst, part='b')
+plot_pdf(10000, prob_lst, part='b')
 
 
