@@ -20,7 +20,7 @@ def Monte_carlo_sim(n):
 plt.style.use('dark_background')
 fig, ax = plt.subplots()
 ax.grid(True)
-ax.set_xlim(1, 3000)
+ax.set_xlim(1, 3100)
 ax.set_ylim(0, 5)
 line, = ax.plot([], [], lw=1, color='green')
 line2, = ax.plot([], [], lw=1, color='blue')

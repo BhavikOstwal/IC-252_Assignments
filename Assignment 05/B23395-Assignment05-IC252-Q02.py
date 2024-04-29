@@ -1,71 +1,104 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 main_file = pd.read_csv("2021_IN_Region_Mobility_Report.csv")
 
-for_days = main_file[90:140]
-a = []
-a1 = []
+file = main_file[90:140]
 
-plt.figure(figsize=(18,13))
+plt.style.use('dark_background')
+plt.figure(figsize=(10,6))
 
-for i in range(10):
-    # exec(f"file{i} = file[90+365*i:140+365*i]")
-    # file = main_file[90+365*i:140+365*i]
-    file = main_file[239064+365*i:239114+365*i]
+columns = file.columns[9:].to_numpy()
+days = file['date'].to_numpy()
+a = days
 
-    columns = file.columns[9:]
-    days = file['date'].to_numpy()
-    a = days
+prob_values = [0.2, 0.2, 0.02, 0.05, 0.03, 0.5]
+
+def Mobility(i):
+    simple_mob = file.iloc[i].to_numpy()
+    all_mob = simple_mob[9:]
+    return all_mob
+
+Mob0 = []
+Mob1 = []
+Mob2 = []
+Mob3 = []
+Mob4 = []
+Mob5 = []
+
+for i in range(len(days)):
+    Mob0.append(Mobility(i)[0])
+    Mob1.append(Mobility(i)[1])
+    Mob2.append(Mobility(i)[2])
+    Mob3.append(Mobility(i)[3])
+    Mob4.append(Mobility(i)[4])
+    Mob5.append(Mobility(i)[5])
+
+def Expected_mobility(i):
+    mob = file.iloc[i].to_numpy()
     
-    # regions
-    a = file.iloc[0].to_numpy()
-    a1.append(a[3])
+    mob = mob[9:]
+    ans = mob.dot(prob_values)
+    return ans
 
-    prob_values = [0.2, 0.2, 0.02, 0.05, 0.03, 0.5]
+E_values = []
+for i in range(len(days)):
+    E_values.append(Expected_mobility(i))
 
-    def Expected_mobility(i):
-        mob = file.iloc[i].to_numpy()
-        
-        mob = mob[9:]
-        ans = mob.dot(prob_values)
-        return ans
 
-    E_values = []
-    for i in range(len(days)):
-        E_values.append(Expected_mobility(i))
+plt.plot(days, Mob0)
+plt.plot(days, Mob1)
+plt.plot(days, Mob2)
+plt.plot(days, Mob3)
+plt.plot(days, Mob4)
+plt.plot(days, Mob5)
+plt.plot(days, E_values,color = 'white')
 
-    plt.plot(days, E_values)
-
+columns = [i[:-24] for i in columns]
+columns.append('Expected Mobility')
 
 plt.xticks(rotation=90)
-plt.legend(a1)
-plt.savefig('Q2.png')
+plt.legend(columns, loc='upper right')
+# plt.savefig('Q2.png')
+# plt.show()
+plt.clf()
+
+
+'''PART (c)'''
+# RMSE
+rmse = []
+for i in range(len(days)):
+    error = 0
+    for j in range(6):
+        exec(f"error += (E_values[i]-Mob{j}[i])**2")
+    rmse.append((error/6)**0.5)
+    
+plt.plot(days,rmse)
+
+
+# Absolute error
+absolute_err = []
+for i in range(len(days)):
+    error = 0
+    for j in range(6):
+        exec(f"error += abs(E_values[i]-Mob{j}[i])")
+    absolute_err.append((error/6))
+    
+plt.plot(days, absolute_err)
+
+
+# # KL divergence
+# kl_div = []
+# for i in range(len(days)):
+#     error = 0
+#     for j in range(6):
+#         exec(f"error += Mob{j}[i]*math.log(2,abs((Mob{j}[i])/(E_values[i])))")
+#     kl_div.append((error/6))
+    
+# plt.plot(days, kl_div)
+
+plt.xticks(rotation=90)
+plt.legend(['RMSE', 'AME'])
 plt.show()
-
-
-# Calculating RMSE
-def calculate_rmse(true_values, predicted_values):
-    return np.sqrt(np.mean((true_values - predicted_values) ** 2))
-
-true_mobilities = np.random.rand(len(E_values))  
-
-mobilities = main_file.iloc[239064+365*0:239114+365*0, 9:].to_numpy()
-predicted_mobilities = np.array([Expected_mobility(j) for j in range(len(mobilities))])  
-
-rmse = calculate_rmse(true_mobilities, predicted_mobilities)
-print(f"RMSE = {rmse}")
-
-# Calculating absolute error
-def calculate_absolute_error(true_values, predicted_values):
-    return np.mean(np.abs(true_values - predicted_values))
-
-true_mobilities = np.random.rand(len(E_values))  
-
-mobilities = main_file.iloc[239064+365*0:239114+365*0, 9:].to_numpy()
-predicted_mobilities = np.array([Expected_mobility(j) for j in range(len(mobilities))])  
-
-absolute_error = calculate_absolute_error(true_mobilities, predicted_mobilities)
-print(f"Absolute Error = {absolute_error}")
-

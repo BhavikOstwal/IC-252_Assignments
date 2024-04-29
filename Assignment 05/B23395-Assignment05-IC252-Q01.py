@@ -16,8 +16,6 @@ unique, counts = np.unique(lst, return_counts=True)
 tab = pd.DataFrame(counts, unique)
 # print(tab)
 
-# print(unique)
-
 # PDF
 prob = []
 for i in range(len(unique)):
@@ -27,9 +25,9 @@ for i in range(len(unique)):
 # print(unique[5030])
 plt.bar(unique, counts/len(lst))
 plt.xticks(unique, rotation=90)
-# plt.savefig("Q1.png")
-# plt.show()
-plt.clf()
+plt.savefig("Q1.png")
+plt.show()
+# plt.clf()
 
 
 
@@ -55,9 +53,7 @@ top_counts = df['counts'].to_numpy()
 
 plt.bar(top_pairs, top_counts/len(lst_pairs))
 # plt.savefig('Q1_b.png')
-plt.show()
-
-
+# plt.show()
 
 '''PART (c)'''
 with open("fileA-TimeMachine.txt", 'r') as my_txt:
@@ -66,8 +62,6 @@ with open("fileA-TimeMachine.txt", 'r') as my_txt:
     lst1 = []
     for i in a:
         lst1.append(i)
-
-
 
 lst_pairs = []
 for i in range(len(lst1)):

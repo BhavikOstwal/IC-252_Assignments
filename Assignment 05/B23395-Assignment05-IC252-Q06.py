@@ -14,7 +14,7 @@ def Integral_sim(n):
             count+=1
     return count*(np.pi)/n
 
-# print(Integral_sim(100000))
+
 
 
 # Now animating
@@ -46,10 +46,11 @@ ani = FuncAnimation(fig, animate, init_func=init, frames=2000, interval=1, blit=
 
 plt.show()
 
-plt.clf()
-plt.cla()
+# plt.clf()
+# plt.cla()
 
 
+'''Second integral'''
 def f(x):
     return 3*(np.pi)/8
 
@@ -57,10 +58,10 @@ def Second_Integral_sim(n):
     count = 0
     for i in range(n):
         x = np.random.uniform(0,1)
-        y = np.random.uniform(0,1.5)
+        y = np.random.uniform(0,2)
         if y<=f(x):
             count+=1
-    return count*(1.5)/n
+    return count*(2)/n
 
 
 # Now animating
@@ -79,7 +80,7 @@ def init():
 x = np.arange(1,2000,1)
 y = np.empty((len(x), ))
 for i in range(len(x)):
-    y[i] = Integral_sim(x[i])
+    y[i] = Second_Integral_sim(x[i])
 
 def animate(i):
     ax = x[:i+1]
@@ -87,7 +88,7 @@ def animate(i):
     line.set_data(ax,ay)
     return line,
 
-ani = FuncAnimation(fig, animate, init_func=init, frames=2000, interval=1, blit=True, repeat=False)
+# ani = FuncAnimation(fig, animate, init_func=init, frames=2000, interval=1, blit=True, repeat=False)
 
-plt.show()
+# plt.show()
 

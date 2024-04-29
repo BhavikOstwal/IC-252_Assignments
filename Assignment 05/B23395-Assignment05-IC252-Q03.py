@@ -27,7 +27,7 @@ prob_lst = [0.5,0.5]
 # For n = 100 steps
 plot_pdf(100, prob_lst, part='a')
 # For n = 1000 steps
-plot_pdf(1000, prob_lst, part='a')
+# plot_pdf(1000, prob_lst, part='a')
 # For n = 10000 steps
 plot_pdf(10000, prob_lst, part='a')
 
@@ -36,9 +36,9 @@ plot_pdf(10000, prob_lst, part='a')
 prob_lst = [0.4,0.6]
 
 # For n = 100 steps
-plot_pdf(100, prob_lst, part='b')
+# plot_pdf(100, prob_lst, part='b')
 # For n = 1000 steps
-plot_pdf(1000, prob_lst, part='b')
+# plot_pdf(1000, prob_lst, part='b')
 # For n = 10000 steps
 plot_pdf(10000, prob_lst, part='b')
 

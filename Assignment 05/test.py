@@ -1,36 +1,69 @@
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
 
-# Define the function whose convergence we want to visualize
-def f(x):
-    return np.cos(x)
+main_file = pd.read_csv("2021_IN_Region_Mobility_Report.csv")
 
-# # Generate the data
-# x_values = np.linspace(0, 10, 100)
-# y_values = f(x_values)
+for_days = main_file[90:140]
+a = []
+a1 = []
 
-# Create a figure and axis
-fig, ax = plt.subplots()
-ax.set_xlim(0, 10)
-ax.set_ylim(-1.2, 1.2)
-line, = ax.plot([], [], lw=2)
+plt.figure(figsize=(18,13))
 
-# Initialization function: plot the background of each frame
-def init():
-    line.set_data([], [])
-    return line,
+for i in range(10):
+    file = main_file[239064+365*i:239114+365*i]
 
-# Animation function: update the plot with new data for each frame
-def animate(i):
-    x = np.linspace(0, 10, 500)
-    y = f(x)
-    x = x[:i]
-    y = y[:i]
-    line.set_data(x, y)
-    return line,
+    columns = file.columns[9:]
+    days = file['date'].to_numpy()
+    a = days
+    
+    # regions
+    a = file.iloc[0].to_numpy()
+    a1.append(a[3])
 
-# Create animation
-ani = FuncAnimation(fig, animate, init_func=init, frames=400, interval=100, blit=True)
+    prob_values = [0.2, 0.2, 0.02, 0.05, 0.03, 0.5]
 
+    def Expected_mobility(i):
+        mob = file.iloc[i].to_numpy()
+        
+        mob = mob[9:]
+        ans = mob.dot(prob_values)
+        return ans
+
+    E_values = []
+    for i in range(len(days)):
+        E_values.append(Expected_mobility(i))
+
+    plt.plot(days, E_values)
+
+
+plt.xticks(rotation=90)
+plt.legend(a1)
+plt.savefig('Q2.png')
 plt.show()
+
+
+# Calculating RMSE
+def calculate_rmse(true_values, predicted_values):
+    return np.sqrt(np.mean((true_values - predicted_values) ** 2))
+
+true_mobilities = np.random.rand(len(E_values))  
+
+mobilities = main_file.iloc[239064+365*0:239114+365*0, 9:].to_numpy()
+predicted_mobilities = np.array([Expected_mobility(j) for j in range(len(mobilities))])  
+
+rmse = calculate_rmse(true_mobilities, predicted_mobilities)
+print(f"RMSE = {rmse}")
+
+# Calculating absolute error
+def calculate_absolute_error(true_values, predicted_values):
+    return np.mean(np.abs(true_values - predicted_values))
+
+true_mobilities = np.random.rand(len(E_values))  
+
+mobilities = main_file.iloc[239064+365*0:239114+365*0, 9:].to_numpy()
+predicted_mobilities = np.array([Expected_mobility(j) for j in range(len(mobilities))])  
+
+absolute_error = calculate_absolute_error(true_mobilities, predicted_mobilities)
+print(f"Absolute Error = {absolute_error}")
+
