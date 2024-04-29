@@ -16,6 +16,8 @@ def plot_samples(samples, mu, sigma):
     plt.ylabel(r'$f_X(x)$', rotation=0)
     plt.grid(True)
     plt.show()
+    plt.clf()
+    plt.cla()
 
 def calculate_stats(samples):
     sample_mean = np.mean(samples)
@@ -25,7 +27,7 @@ def calculate_stats(samples):
 mu = float(input("Enter the mean: "))
 sigma = float(input("Enter the standard deviation: "))
 
-sample_sizes = [50, 100, 200, 500, 5000]
+sample_sizes = [50, 500, 1000, 2000, 5000]
 
 for i, n in enumerate(sample_sizes, 1):
     samples = generate_normal_samples(mu, sigma, n)

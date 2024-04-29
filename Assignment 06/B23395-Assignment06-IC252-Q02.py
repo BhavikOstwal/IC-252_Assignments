@@ -18,7 +18,7 @@ trunc_exp_dist = stats.truncexpon(b - a, loc=a, scale=beta)
 random_numbers = trunc_exp_dist.rvs(size=1000)  
 
 fig, axs = plt.subplots(3, 1)
-
+fig.set_figheight(10)
 axs[0].hist(uniform_data, bins=15, density=True, alpha=0.5, color='b', label='Sample Data')
 x = np.linspace(0, 1, 100)
 axs[0].plot(x, np.ones_like(x), 'r-', lw=2, label='Uniform Density Function')

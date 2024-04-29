@@ -27,37 +27,37 @@ plt.cla()
 
 
 '''Part (b)'''
-def gaussian(x, mean, variance):
+def normal_dist(x, mean, variance):
     return norm.pdf(x, mean, np.sqrt(variance))
 
-def kl_divergence(p, q, x):
+def kl_divergence(p, q):
     return np.sum(p * np.log(p / q))
 
-def cross_entropy(p, q, x):
+def cross_entropy(p, q):
     return -np.sum(p * np.log(q))
 
 x = np.linspace(-10, 10, 1000)
 
-scenarios = [
+parameters_dict = [
     {'mean_p': 0, 'variance_p': 1, 'mean_q': 0, 'variance_q': 1},  
-    {'mean_p': 0, 'variance_p': 1, 'mean_q': 1.5, 'variance_q': 1},  
+    {'mean_p': 0, 'variance_p': 1, 'mean_q': 2, 'variance_q': 1},  
     {'mean_p': 0, 'variance_p': 1, 'mean_q': 4, 'variance_q': 1}   
 ]
 
-for scenario in scenarios:
-    p = gaussian(x, scenario['mean_p'], scenario['variance_p'])
-    q = gaussian(x, scenario['mean_q'], scenario['variance_q'])
+for i in parameters_dict:
+    p = normal_dist(x, i['mean_p'], i['variance_p'])
+    q = normal_dist(x, i['mean_q'], i['variance_q'])
     
     plt.plot(x, p, color='blue')
     plt.plot(x, q, color='red')
-    plt.title('Gaussian Distributions')
+    plt.title('normal_dist Distributions')
     plt.xlabel(r'$x$')
     plt.ylabel('Probability Density')
     plt.grid(True)
     plt.show()
 
-    kl_div = kl_divergence(p, q, x)
-    cross_ent = cross_entropy(p, q, x)
+    kl_div = kl_divergence(p, q)
+    cross_ent = cross_entropy(p, q)
 
     print(f"KL Divergence: {kl_div}")
     print(f"Cross-Entropy: {cross_ent}")
